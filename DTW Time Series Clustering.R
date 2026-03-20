@@ -17,7 +17,7 @@ library(zoo)
 immun <- read_excel("Child_Immunisation_FINAL.xlsx") %>%
   mutate(
     Month_clean = str_squish(Month),
-    Month_start = str_extract(Month_clean, "^[A-Za-z]+\\s\\d{2}"),  # e.g., "Apr 20"
+    Month_start = str_extract(Month_clean, "^[A-Za-z]+\\s\\d{2}"),
     Month_date  = parse_date_time(Month_start, orders = "b y")
   )
 
@@ -121,7 +121,7 @@ plots_list <- lapply(sort(unique(avg_ts_full_complete$Cluster)), function(cl) {
                         "<br>Coverage:", round(Percent*100,1), "%",
                         "<br>Month:", format(Month_date, "%b %Y"))) %>%
     layout(title = list(text = paste0("Cluster ", cl),
-                        x = 0.5,       # Center the title
+                        x = 0.5,  
                         xanchor = "center"),
            xaxis = list(title = "Month",
                         tickvals = all_months,
@@ -130,16 +130,16 @@ plots_list <- lapply(sort(unique(avg_ts_full_complete$Cluster)), function(cl) {
                         range = c(min(all_months), max(all_months))),
            yaxis = list(title = "Coverage (%)", range = c(0, 100)),
            showlegend = FALSE,
-           margin = list(l = 60, r = 60, t = 80, b = 60))  # Add margins
+           margin = list(l = 60, r = 60, t = 80, b = 60)) 
 })
 
 p_final <- subplot(plots_list, nrows = length(plots_list),
                    shareX = TRUE, shareY = TRUE, titleY = TRUE) %>%
   layout(title = list(text = "Time Series of Vaccine Coverage by Cluster (BCG, OPV0, HepB0) Apr 2020 - Mar 2022",
-                      x = 0.5, xanchor = "center"),  # Center main title
+                      x = 0.5, xanchor = "center"), 
          showlegend = TRUE,
          legend = list(title = list(text = "Vaccine")),
-         margin = list(l = 70, r = 70, t = 100, b = 70))  # Global margins
+         margin = list(l = 70, r = 70, t = 100, b = 70)) 
 
 p_final
 
