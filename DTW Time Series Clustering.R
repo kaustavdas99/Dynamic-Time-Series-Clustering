@@ -149,7 +149,7 @@ p_final
 ####################################################################################
 
 cluster_names <- c(
-  "1" = "Lower Coverage (Medium Risk)",
+  "1" = "Lower Coverage (High risk)",
   "2" = "Moderate Coverage (Medium Risk)",
   "3" = "Very High Coverage (Low Risk)",
   "4" = "High Coverage (Low Risk)"
