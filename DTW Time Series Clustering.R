@@ -257,9 +257,6 @@ district_risk <- cluster_assignment %>%
 print(district_risk)
 write.csv(district_risk, "District_Risk.csv", row.names = FALSE)
 
-
-###################################################################################
-
 ###################################################################################
 # STATISTICAL TESTS & CLUSTER VALIDATION
 ###################################################################################
@@ -269,9 +266,8 @@ library(pvclust)
 library(cluster)
 library(dplyr)
 
-# ----------------------------------------
 # Cophenetic Correlation Coefficient (CCC)
-# ----------------------------------------
+
 
 # Hierarchical clustering from DTW distance
 hc <- hclust(dtw_dist, method = "average")
@@ -283,9 +279,8 @@ cophe_dist <- cophenetic(hc)
 ccc <- cor(as.vector(dtw_dist), as.vector(cophe_dist))
 cat("Cophenetic Correlation Coefficient (CCC):", round(ccc, 3), "\n\n")
 
-# ----------------------------------------
+
 # Cluster Stability via Bootstrap (pvclust)
-# ----------------------------------------
 
 # pvclust- rows = features (time points), columns = observations (districts)
 ts_matrix_t <- t(ts_matrix)
@@ -386,7 +381,7 @@ print(cluster_scores)
 
 
 
-####################################################################################################
+##################################################################################
 #Other Clustering plots
 
 library(readxl)
